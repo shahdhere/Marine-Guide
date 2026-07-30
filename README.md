@@ -123,12 +123,12 @@ Database schema includes:
 * EF Core Migrations
 
 ---
-
+````markdown
 # 🔌 API Flow
 
 Example workflow:
 
-```
+```text
 User Location
       |
       ↓
@@ -148,31 +148,29 @@ Dashboard Result
 
 ## 📸 Screenshots
 
-### Home Page
-![Home Page](Sea/screenshots/Home.png)
+```markdown
+![Home Page](./Sea/screenshots/Home.png)
+```
 
-### Marine Encyclopedia
-![Marine Encyclopedia](Sea/screenshots/Encyclopedia.png)
+```markdown
+![Home Page](./Sea/screenshots/Home.png)
 
-### First Aid Guide
-![First Aid](Sea/screenshots/FirstAid.png)
+![Marine Encyclopedia](./Sea/screenshots/Encyclopedia.png)
 
-### Boats
-![Boats](Sea/screenshots/Boats.png)
+![First Aid](./Sea/screenshots/FirstAid.png)
 
-### Fishing
-![Fishing](Sea/screenshots/Fishing.png)
+![Boats](./Sea/screenshots/Boats.png)
 
-### Map
-![Map](Sea/screenshots/Map.png)
+![Fishing](./Sea/screenshots/Fishing.png)
 
-### Fish
-![Fish](Sea/screenshots/Fish.png)
+![Map](./Sea/screenshots/Map.png)
 
-### Details
-![Details](Sea/screenshots/Details.png)
+![Fish](./Sea/screenshots/Fish.png)
 
+![Details](./Sea/screenshots/Details.png)
+```
 
+---
 # 🎯 Skills Demonstrated
 
 * Full-stack web development using ASP.NET Core MVC

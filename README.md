@@ -143,15 +143,32 @@ Risk Analysis Logic
       ↓
 Dashboard Result
 
-# 📸 Screenshots
+## 📸 Screenshots
 
-(Add screenshots here)
+### Home Page
+![Home Page](Sea/screenshots/Home.png)
 
-* Home Page
-* Marine Dashboard
-* Marine Encyclopedia
-* First Aid Guide
-* Interactive Map
+### Marine Encyclopedia
+![Marine Encyclopedia](Sea/screenshots/Encyclopedia.png)
+
+### First Aid Guide
+![First Aid](Sea/screenshots/FirstAid.png)
+
+### Boats
+![Boats](Sea/screenshots/Boats.png)
+
+### Fishing
+![Fishing](Sea/screenshots/Fishing.png)
+
+### Map
+![Map](Sea/screenshots/Map.png)
+
+### Fish
+![Fish](Sea/screenshots/Fish.png)
+
+### Details
+![Details](Sea/screenshots/Details.png)
+
 
 # 🎯 Skills Demonstrated
 

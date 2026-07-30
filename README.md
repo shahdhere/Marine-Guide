@@ -1,54 +1,71 @@
 # 🌊 Marine Guide Saudi Arabia
 
-A web-based marine guide platform that helps users explore marine life, check sea conditions, and access safety information for activities such as boating, fishing, and swimming.
+A web-based marine guide platform that helps users explore marine life, analyze sea conditions, and access safety information for marine activities.
 
-The system provides marine weather analysis, activity suitability assessment, marine encyclopedia, and first aid guidance for dangerous marine creatures.
+The system provides marine weather analysis, activity suitability prediction, marine encyclopedia, and first aid guidance for dangerous marine creatures.
 
-## 🚀 Features
+---
 
-### 🌊 Marine Dashboard
+# 🚀 Features
 
-* Displays current marine conditions.
-* Provides activity suitability analysis for:
+## 🌊 Marine Dashboard
 
-  * 🚤 Boating
-  * 🎣 Fishing
-  * 🏊 Swimming
-* Risk level evaluation based on marine conditions.
+The dashboard analyzes marine conditions and evaluates activity suitability for:
 
-### 🌤 Marine Weather Integration
+- 🚤 Boating
+- 🎣 Fishing
+- 🏊 Swimming
 
-* Real-time weather data retrieval using external APIs.
-* Analyzes:
+The system calculates risk levels based on:
 
-  * Wind speed
-  * Wave height
-  * Temperature
-  * Visibility
+- Wind speed
+- Wave height
+- Temperature
+- Visibility
 
-### 🐠 Marine Encyclopedia
+---
 
-* Browse marine creatures with:
+## 🌤 Marine Weather Integration
 
-  * Images
-  * Description
-  * Habitat locations
-  * Breeding seasons
-  * Maximum size and age
-  * Danger classification
+The application integrates external APIs to retrieve marine and weather information:
 
-### 🩺 First Aid Guide
+- OpenWeather API
+- Open-Meteo Marine API
 
-* Provides safety instructions for dangerous marine animals:
+The received data is processed using custom risk analysis logic to provide suitable activity recommendations.
 
-  * Jellyfish stings
-  * Lionfish injuries
-  * Stingray injuries
-  * Venomous marine species
+---
 
-### 🗺 Interactive Marine Map
+## 🐠 Marine Encyclopedia
 
-* Location-based marine information using map integration.
+Users can explore marine creatures with detailed information:
+
+- Name
+- Image
+- Description
+- Habitat location
+- Breeding season
+- Maximum size
+- Maximum age
+- Danger classification
+- Prevention instructions
+
+---
+
+## 🩺 First Aid Guide
+
+Provides safety instructions for dangerous marine creatures:
+
+- Jellyfish stings
+- Lionfish injuries
+- Stingray injuries
+- Venomous marine species
+
+---
+
+## 🗺 Interactive Marine Map
+
+Provides location-based marine information using map integration.
 
 ---
 
@@ -56,135 +73,130 @@ The system provides marine weather analysis, activity suitability assessment, ma
 
 ## Backend
 
-* ASP.NET Core MVC (.NET 9)
-* C#
-* Entity Framework Core
-* LINQ
-* Dependency Injection
-* RESTful API Integration
+- ASP.NET Core MVC (.NET 9)
+- C#
+- Entity Framework Core
+- LINQ
+- Dependency Injection
+- MVC Architecture
+- REST API Integration
 
 ## Frontend
 
-* HTML5
-* CSS3
-* JavaScript
-* Bootstrap
-* Razor Views (MVC)
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap
+- Razor Views
 
 ## Database
 
-* Microsoft SQL Server
-* Entity Framework Core Migrations
-* Code First Approach
-* Database Relationships:
+- Microsoft SQL Server
+- Entity Framework Core Code First
+- EF Core Migrations
+- Data Seeding
+- Database Relationships
 
-  * One-to-Many Relationships
-  * Foreign Keys
-  * Data Seeding
+Database design includes:
 
-## APIs
+- Primary Keys
+- Foreign Keys
+- One-to-Many Relationships
 
-* OpenWeather API
-* Open-Meteo Marine API
-
-Used external APIs to retrieve marine and weather information and process it inside the application.
+---
 
 # 🗄 Database Design
 
 Main entities:
 
-### Fish
+## Fish
 
-Stores marine species information:
+Stores marine creature information:
 
-* Name
-* Description
-* Location
-* Danger status
-* Edibility
-* Category
+- Name
+- Description
+- Location
+- Danger status
+- Edibility
+- Size
+- Age
 
-### Categories
+## Categories
 
 Classifies marine creatures:
 
-* Fish
-* Dangerous Species
+- Fish
+- Dangerous Species
 
-### FirstAid
+## FirstAid
 
-Contains emergency instructions related to dangerous creatures.
-
-Database schema includes:
-
-* Primary Keys
-* Foreign Keys
-* Entity Relationships
-* EF Core Migrations
+Stores emergency instructions related to dangerous creatures.
 
 ---
-````markdown
-# 🔌 API Flow
 
-Example workflow:
-
-```text
-User Location
-      |
-      ↓
-Marine Weather API
-      |
-      ↓
-Weather Controller
-      |
-      ↓
-Risk Analysis Logic
-      |
-      ↓
-
-Dashboard Result
-
-
-
-## 📸 Screenshots
-
-```markdown
-![Home Page](./Sea/screenshots/Home.png)
-```
-
-```markdown
-![Home Page](./Sea/screenshots/Home.png)
-
-![Marine Encyclopedia](./Sea/screenshots/Encyclopedia.png)
-
-![First Aid](./Sea/screenshots/FirstAid.png)
-
-![Boats](./Sea/screenshots/Boats.png)
-
-![Fishing](./Sea/screenshots/Fishing.png)
-
-![Map](./Sea/screenshots/Map.png)
-
-![Fish](./Sea/screenshots/Fish.png)
-
-![Details](./Sea/screenshots/Details.png)
-```
 
 ---
+
+# 📸 Screenshots
+
+
+## Home Page
+
+![Home Page](Sea/screenshots/Home.png)
+
+
+## Marine Encyclopedia
+
+![Marine Encyclopedia](Sea/screenshots/Encyclopedia.png)
+
+
+## First Aid Guide
+
+![First Aid](Sea/screenshots/FirstAid.png)
+
+
+## Boats
+
+![Boats](Sea/screenshots/Boats.png)
+
+
+## Fishing
+
+![Fishing](Sea/screenshots/Fishing.png)
+
+
+## Interactive Map
+
+![Map](Sea/screenshots/Map.png)
+
+
+## Fish
+
+![Fish](Sea/screenshots/Fish.png)
+
+
+## Details
+
+![Details](Sea/screenshots/Details.png)
+
+---
+
 # 🎯 Skills Demonstrated
 
-* Full-stack web development using ASP.NET Core MVC
-* REST API consumption and integration
-* Database design with SQL Server
-* Entity Framework Core migrations
-* MVC architecture
-* Frontend development with Bootstrap and JavaScript
-* External service integration
-* Data modeling and relationships
-* Problem solving and debugging
+- Full-stack web development using ASP.NET Core MVC
+- REST API consumption and integration
+- SQL Server database design
+- Entity Framework Core migrations
+- Code First approach
+- Data modeling and relationships
+- Bootstrap responsive UI
+- JavaScript API communication
+- External service integration
+- Debugging and problem solving
 
+---
 
 # 👩‍💻 Developer
 
-Shahd
+**Shahd**  
 Software Engineer

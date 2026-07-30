@@ -1,72 +1,172 @@
-<<<<<<< HEAD
 # 🌊 Marine Guide Saudi Arabia
 
-Marine Guide Saudi Arabia is an ASP.NET Core MVC web application designed to help users explore marine activities, check sea conditions, and learn about marine life and safety.
+A web-based marine guide platform that helps users explore marine life, check sea conditions, and access safety information for activities such as boating, fishing, and swimming.
 
-## Features
+The system provides marine weather analysis, activity suitability assessment, marine encyclopedia, and first aid guidance for dangerous marine creatures.
 
-### Marine Weather Analysis
-- Real-time weather data using OpenWeather and StormGlass APIs.
-- Sea condition evaluation based on:
-  - Wind speed
-  - Wave height
-  - Visibility
-- Safety recommendations for:
-  - Swimming 🏊‍♀️
-  - Boating 🚤
-  - Fishing 🎣
+## 🚀 Features
 
-### Marine Encyclopedia
-- Explore different marine species.
-- View detailed information and images about marine animals.
+### 🌊 Marine Dashboard
 
-### First Aid Guide
-- Provides important first aid information for marine-related incidents.
+* Displays current marine conditions.
+* Provides activity suitability analysis for:
 
-### 📍 Interactive Map
-- Detects user location using GPS.
-- Displays marine activity information based on location.
+  * 🚤 Boating
+  * 🎣 Fishing
+  * 🏊 Swimming
+* Risk level evaluation based on marine conditions.
 
-## Location-Based Weather Analysis
-The system uses the user's location to provide marine weather information and analyze sea conditions
-for different activities such as swimming, fishing, and boating.
-## Development Status
-This project is currently under development. More features and improvements will be added in future updates.
+### 🌤 Marine Weather Integration
 
-## Screenshots
+* Real-time weather data retrieval using external APIs.
+* Analyzes:
 
-### Home Page
-![Home Page](Sea/screenshots/HomePage.png)
+  * Wind speed
+  * Wave height
+  * Temperature
+  * Visibility
 
-### Marine Encyclopedia
-![Marine Encyclopedia](Sea/screenshots/MarineEncyclopedia.png)
+### 🐠 Marine Encyclopedia
 
-### Marine Animals
-![Marine Animals](Sea/screenshots/MarineAnimals.png)
+* Browse marine creatures with:
 
-### Marine Animal Details
-![Marine Animal Details](Sea/screenshots/MarineAnimalDetails.png)
+  * Images
+  * Description
+  * Habitat locations
+  * Breeding seasons
+  * Maximum size and age
+  * Danger classification
 
-### First Aid Guide
-![First Aid Guide](Sea/screenshots/FirstAidGuide.png)
+### 🩺 First Aid Guide
 
-### Map
-![Map](Sea/screenshots/Map.png)
+* Provides safety instructions for dangerous marine animals:
 
-## Built With
-- ASP.NET Core MVC
-- Entity Framework Core
-- SQL Server
-- C#
-- HTML / CSS / JavaScript
-- Leaflet.js
-- OpenWeather API
-- StormGlass API
+  * Jellyfish stings
+  * Lionfish injuries
+  * Stingray injuries
+  * Venomous marine species
 
-## Purpose
+### 🗺 Interactive Marine Map
 
-The project aims to provide users with a smart marine assistant that improves safety awareness and supports marine activities through weather analysis and educational resources.
-=======
+* Location-based marine information using map integration.
+
+---
+
+# 🛠 Technical Stack
+
+## Backend
+
+* ASP.NET Core MVC (.NET 9)
+* C#
+* Entity Framework Core
+* LINQ
+* Dependency Injection
+* RESTful API Integration
+
+## Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+* Bootstrap
+* Razor Views (MVC)
+
+## Database
+
+* Microsoft SQL Server
+* Entity Framework Core Migrations
+* Code First Approach
+* Database Relationships:
+
+  * One-to-Many Relationships
+  * Foreign Keys
+  * Data Seeding
+
+## APIs
+
+* OpenWeather API
+* Open-Meteo Marine API
+
+Used external APIs to retrieve marine and weather information and process it inside the application.
+
+# 🗄 Database Design
+
+Main entities:
+
+### Fish
+
+Stores marine species information:
+
+* Name
+* Description
+* Location
+* Danger status
+* Edibility
+* Category
+
+### Categories
+
+Classifies marine creatures:
+
+* Fish
+* Dangerous Species
+
+### FirstAid
+
+Contains emergency instructions related to dangerous creatures.
+
+Database schema includes:
+
+* Primary Keys
+* Foreign Keys
+* Entity Relationships
+* EF Core Migrations
+
+---
+
+# 🔌 API Flow
+
+Example workflow:
+
+```
+User Location
+      |
+      ↓
+Marine Weather API
+      |
+      ↓
+Weather Controller
+      |
+      ↓
+Risk Analysis Logic
+      |
+      ↓
+Dashboard Result
+
+# 📸 Screenshots
+
+(Add screenshots here)
+
+* Home Page
+* Marine Dashboard
+* Marine Encyclopedia
+* First Aid Guide
+* Interactive Map
+
+# 🎯 Skills Demonstrated
+
+* Full-stack web development using ASP.NET Core MVC
+* REST API consumption and integration
+* Database design with SQL Server
+* Entity Framework Core migrations
+* MVC architecture
+* Frontend development with Bootstrap and JavaScript
+* External service integration
+* Data modeling and relationships
+* Problem solving and debugging
 
 
->>>>>>> 01a3fbf (Add project README)
+# 👩‍💻 Developer
+
+Shahd
+Software Engineer

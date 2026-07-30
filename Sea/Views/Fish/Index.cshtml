@@ -1,0 +1,47 @@
+﻿@model List<Sea.Models.Fish>
+
+<h1 style="color:white;">🐟 Fish Encyclopedia</h1>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px;">
+
+    @foreach (var item in Model)
+    {
+        <div style="
+                    border:1px solid #ddd;
+                    padding:20px;
+                    width:300px;
+                    border-radius:10px;
+                    color:white;">
+
+            <img src="@item.ImageUrl"
+                 style="
+                        width:100%;
+                        height:200px;
+                        object-fit:cover;
+                        border-radius:10px;
+                        margin-bottom:15px;" />
+
+            <h3>@item.Name</h3>
+
+            <p><b>Location:</b> @item.Locations</p>
+            <p><b>Edible:</b> @(item.IsEdible ? "Yes" : "No")</p>
+            <p><b>Dangerous:</b> @(item.IsDangerous ? "Yes" : "No")</p>
+
+            <a asp-controller="Fish"
+               asp-action="Details"
+               asp-route-id="@item.Id"
+               style="
+                        display:inline-block;
+                        margin-top:10px;
+                        padding:5px 10px;
+                        background:black;
+                        color:white;
+                        text-decoration:none;
+                        border-radius:5px;">
+                View Details
+            </a>
+
+        </div>
+    }
+
+</div>

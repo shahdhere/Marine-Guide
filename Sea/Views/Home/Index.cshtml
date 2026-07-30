@@ -1,0 +1,559 @@
+﻿@{
+    ViewData["Title"] = "Marine Dashboard";
+}
+
+
+<div class="container-fluid">
+
+   
+    <!-- Cards Row -->
+    <div class="row g-3 mb-4">
+
+
+        <div class="col-md-3">
+            <div class="card shadow dashboard-card">
+                <div class="card-body text-center">
+
+                    <h2 id="temperature">-- °C</h2>
+                    <p>Temperature</p>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card shadow dashboard-card">
+                <div class="card-body text-center">
+
+                    <h2 id="wind">-- m/s</h2>
+                    <p>Wind Speed</p>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card shadow dashboard-card">
+                <div class="card-body text-center">
+
+                    <h2 id="wave">-- m</h2>
+                    <p>Wave Height</p>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card shadow dashboard-card">
+                <div class="card-body text-center">
+
+                    <h2 id="status">Loading...</h2>
+                    <p>Safety</p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="row g-3">
+
+
+        <!-- Charts Row 1 -->
+        <div class="row g-3 mb-4">
+
+
+            <div class="col-md-6">
+
+                <div class="card shadow dashboard-card">
+                    <div class="card-body">
+
+                        <h5>
+                            💨 Wind Speed
+                        </h5>
+
+                        <canvas id="windChart"></canvas>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6">
+
+                <div class="card shadow dashboard-card">
+                    <div class="card-body">
+
+                        <h5>
+                            🌊 Wave Height
+                        </h5>
+
+                        <canvas id="waveChart"></canvas>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- Charts Row 2 -->
+        <div class="row g-3 mb-4">
+
+
+            <div class="col-md-6">
+
+                <div class="card shadow dashboard-card">
+                    <div class="card-body">
+
+                        <h5>
+                            🌡 Temperature
+                        </h5>
+
+                        <canvas id="tempChart"></canvas>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6">
+
+                <div class="card shadow dashboard-card">
+                    <div class="card-body">
+
+                        <h5>
+                            🌧 Rain
+                        </h5>
+
+                        <canvas id="rainChart"></canvas>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- RIGHT SIDE MAP -->
+        <!-- Map + Tips -->
+
+        <div class="row g-3">
+
+
+            <div class="col-md-8">
+
+                <div class="card shadow dashboard-card">
+
+                    <div class="card-body">
+
+                        <h5>
+                            🗺 Marine Map
+                        </h5>
+
+
+                        <div id="map" style="height:400px;"></div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-4">
+
+                <div class="card shadow dashboard-card">
+
+                    <div class="card-body">
+
+
+                        <div class="safety-box">
+
+                            <h5>
+                                ⚠️ Safety Recommendations
+                            </h5>
+
+
+                            <div id="recommendation">
+                                Checking marine conditions...
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            </div>
+
+        </div>
+        </div>
+@section Scripts {
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+
+        let windChart;
+        let waveChart;
+        let tempChart;
+        let rainChart;
+
+
+        // ================= MAP =================
+
+        var map = L.map('map');
+
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            attribution:'&copy; OpenStreetMap contributors'
+
+        }).addTo(map);
+
+
+
+        // ================= LOCATION =================
+
+
+        navigator.geolocation.getCurrentPosition(function(position){
+
+
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+
+
+            // Map
+
+            map.setView([lat, lon], 12);
+
+
+            L.marker([lat, lon])
+            .addTo(map)
+            .bindPopup("Your Location")
+            .openPopup();
+
+
+
+            // API
+
+            getMarineData(lat, lon);
+
+
+        });
+
+
+
+
+        // ================= API =================
+
+
+        function getMarineData(lat,lon){
+
+
+        fetch(`/api/weather/marine-status?type=boats&lat=${lat}&lon=${lon}`)
+
+
+        .then(response=>response.json())
+
+
+        .then(data=>{
+
+
+        console.log(data);
+
+
+        // Cards
+
+        document.getElementById("wind").innerHTML =
+        data.windSpeed.toFixed(1)+" m/s";
+
+
+        document.getElementById("wave").innerHTML =
+        data.waveHeight.toFixed(1)+" m";
+
+
+        document.getElementById("temperature").innerHTML =
+        data.temperature.toFixed(1)+" °C";
+
+
+        document.getElementById("status").innerHTML =
+        data.status;
+
+
+
+        document.getElementById("recommendation").innerHTML =
+               data.reasons
+        .map(x=>{
+
+            if(x.includes("wind"))
+                return "💨 " + x;
+
+
+            if(x.includes("wave"))
+                return "🌊 " + x;
+
+
+            if(x.includes("Avoid"))
+                return "🚫 " + x;
+
+
+            return "⚠️ " + x;
+
+
+        })
+        .join("<br>");
+
+
+
+        updateCharts(data);
+
+
+
+        })
+
+
+        .catch(error=>{
+
+        console.log("API Error:",error);
+
+        });
+
+
+        }
+
+
+
+
+
+
+        // ================= CHARTS =================
+
+
+
+        windChart = new Chart(
+        document.getElementById("windChart"),
+        {
+
+        type:"line",
+
+        data:{
+
+        labels:[],
+
+        datasets:[{
+
+        label:"Wind Speed m/s",
+
+        data:[],
+
+        borderColor:"green",
+
+        backgroundColor:"rgba(0,150,255,0.2)",
+
+        fill:true,
+
+        tension:0.4
+
+        }]
+
+        }
+
+        });
+
+
+
+
+
+
+
+        waveChart = new Chart(
+        document.getElementById("waveChart"),
+        {
+
+        type:"line",
+
+        data:{
+
+        labels:[],
+
+        datasets:[{
+
+        label:"Wave Height m",
+
+        data:[],
+
+        borderColor:"blue",
+
+        backgroundColor:"rgba(0,150,255,0.2)",
+
+        fill:true,
+
+        tension:0.4
+
+        }]
+
+        }
+
+        });
+
+
+
+
+
+
+
+        tempChart = new Chart(
+        document.getElementById("tempChart"),
+        {
+
+        type:"line",
+
+        data:{
+
+        labels:[],
+
+        datasets:[{
+
+        label:"Temperature °C",
+
+        data:[],
+
+        borderColor:"orange",
+
+        backgroundColor:"rgba(255,165,0,0.2)",
+
+        fill:true,
+
+        tension:0.4
+
+        }]
+
+        }
+
+        });
+
+
+
+
+
+
+
+        rainChart = new Chart(
+        document.getElementById("rainChart"),
+        {
+
+        type:"bar",
+
+        data:{
+
+        labels:[],
+
+        datasets:[{
+
+        label:"Rain mm",
+
+        data:[]
+
+        }]
+
+        }
+
+        });
+
+
+
+
+
+
+        // ================= UPDATE =================
+
+
+
+        function updateCharts(data){
+
+
+        let hours=[
+        "1h","2h","3h","4h","5h","6h",
+        "7h","8h","9h","10h","11h","12h",
+        "13h","14h","15h","16h","17h",
+        "18h","19h","20h","21h","22h","23h","24h"
+        ];
+
+
+
+        windChart.data.labels = hours;
+
+        windChart.data.datasets[0].data =
+        data.windHistory;
+
+
+
+
+        waveChart.data.labels = hours;
+
+        waveChart.data.datasets[0].data =
+        data.waveHistory;
+
+
+
+
+        tempChart.data.labels = hours;
+
+        tempChart.data.datasets[0].data =
+        data.temperatureHistory;
+
+
+
+
+        // مؤقتاً لأن DTO لا يحتوي RainHistory
+
+        rainChart.data.labels = ["Now"];
+
+        rainChart.data.datasets[0].data =
+        [data.rain];
+
+
+
+
+        windChart.update();
+
+        waveChart.update();
+
+        tempChart.update();
+
+        rainChart.update();
+
+
+        }
+
+
+
+    </script>
+
+}

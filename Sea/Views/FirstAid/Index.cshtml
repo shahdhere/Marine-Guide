@@ -1,0 +1,31 @@
+﻿@model List<Sea.Models.FirstAid>
+
+<h1 style="color:white;">🩹 First Aid</h1>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px;">
+
+    @foreach (var item in Model)
+    {
+        <div style="
+                        border:1px solid #ddd;
+                        padding:20px;
+                        width:300px;
+                        border-radius:10px;
+                        color:white;">
+
+            <img src="@item.ImageUrl"
+                 style="
+                            width:100%;
+                            height:200px;
+                            object-fit:cover;
+                            border-radius:10px;
+                            margin-bottom:15px;" />
+
+            <h3>@item.Title</h3>
+
+            <p>@item.Description</p>
+
+        </div>
+    }
+
+</div>

@@ -1,0 +1,14 @@
+﻿body {
+    background: #0F172A;
+}
+
+.dashboard-card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 15px;
+}
+
+.card-title {
+    color: #38BDF8;
+}

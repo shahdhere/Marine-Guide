@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sea</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Sea.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body style="
+    background-image:url('/images/SeaB.jpg');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    min-height:100vh;">
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <h3>
+                🌊 Marine Guide
+            </h3>
+
+
+            <a asp-controller="Home" asp-action="Index">
+                🏠 Dashboard
+            </a>
+
+
+            <a asp-controller="Boats" asp-action="Index">
+                🚤 Boats
+            </a>
+
+
+            <a asp-controller="Fishing" asp-action="Index">
+                🎣 Fishing
+            </a>
+
+
+            <a asp-controller="Swimming" asp-action="Index">
+                🏊 Swimming
+            </a>
+
+
+            <a asp-controller="Marine" asp-action="Index">
+                🐟 Encyclopedia
+            </a>
+
+
+        </aside>
+
+        <!-- Main -->
+
+        <div class="content">
+
+            <header class="topbar">
+
+                <div>
+
+                    <h5>📍 Current Location</h5>
+
+                    <span id="currentLocation">
+                        Waiting...
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <div class="d-flex align-items-center gap-3">
+
+
+                        <div class="update-info text-end">
+
+                            <div class="update-title">
+                                ⟳ Last Update
+                            </div>
+
+
+                            <div id="lastUpdate">
+                                Loading...
+                            </div>
+
+
+                        </div>
+
+
+
+                        <button id="refreshBtn" class="refresh-btn">
+
+                            <i class="bi bi-arrow-clockwise"></i>
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <main>
+
+                @RenderBody()
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer text-muted">
+        <div class="container">
+           2026 - Sea 
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        navigator.geolocation.getCurrentPosition(function(position){
+
+
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+
+
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+            .then(response => response.json())
+            .then(data => {
+
+
+                let location = data.address;
+
+
+                let city =
+                    location.city ||
+                    location.town ||
+                    location.village ||
+                    location.state ||
+                    "Unknown";
+
+
+
+                document.getElementById("currentLocation").innerHTML =
+                    city;
+
+
+
+            })
+            .catch(error=>{
+
+                document.getElementById("currentLocation").innerHTML =
+                "Location unavailable";
+
+            });
+
+
+        },
+        function(){
+
+            document.getElementById("currentLocation").innerHTML =
+            "Permission denied";
+
+        });
+
+    </script>
+
+    <script>
+    function updateTime(){
+
+
+    let now = new Date();
+
+
+    let options = {
+    weekday:"long",
+    year:"numeric",
+    month:"long",
+    day:"numeric",
+    hour:"2-digit",
+    minute:"2-digit"
+    };
+
+
+    document.getElementById("lastUpdate").innerHTML =
+    now.toLocaleDateString("en-US", options);
+
+
+    }
+
+
+    // تشغيل أول مرة عند فتح الصفحة
+    updateTime();
+
+
+    // تحديث الوقت كل دقيقة
+    setInterval(updateTime, 60000);
+
+
+    // Refresh Button
+
+    document.getElementById("refreshBtn")
+    .addEventListener("click",function(){
+
+
+    location.reload();
+
+
+    });
+    </script>
+</body>
+</html>

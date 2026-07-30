@@ -1,0 +1,37 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.rsuser
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# Database files
+*.mdf
+*.ldf
+
+# Sensitive configuration
+appsettings.Development.json
+appsettings.json
+
+# Environment files
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+appsettings.json
+appsettings.Development.json

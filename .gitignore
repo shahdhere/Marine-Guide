@@ -35,3 +35,5 @@ Thumbs.db
 
 appsettings.json
 appsettings.Development.json
+Properties/PublishProfiles/
+Properties/ServiceDependencies/

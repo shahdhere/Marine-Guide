@@ -59,9 +59,10 @@
         <!-- Main -->
 
         <div class="content">
-
-            <header class="topbar">
-                <button id="menuToggle" class="menu-toggle">
+            @if (ViewData["HideTopBar"] == null)
+            {
+                <header class="topbar">
+                    <button id="menuToggle" class="menu-toggle">
                     <i class="bi bi-list"></i>
                 </button>
                 <div>
@@ -109,7 +110,7 @@
                 </div>
 
             </header>
-
+            }
             <main id="mainContent" class="main-content">
 
                 @RenderBody()
@@ -119,7 +120,7 @@
         </div>
 
     </div>
-
+    
 
     <footer class="footer text-muted">
         <div class="container">

@@ -5,11 +5,10 @@
 
 <!-- ================= TOP CARDS ================= -->
 
-<div class="row mb-4">
+<div class="row g-3 mb-4">
 
-
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
 
                 <h5>🌬 Wind Speed</h5>
@@ -24,8 +23,8 @@
 
 
 
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
 
                 <h5>🌊 Wave Height</h5>
@@ -40,8 +39,8 @@
 
 
 
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
 
                 <h5>⏱ Wave Period</h5>
@@ -56,8 +55,8 @@
 
 
 
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
 
                 <h5>👁 Visibility</h5>
@@ -80,13 +79,10 @@
 <!-- ================= EXTRA INFO ================= -->
 
 
-<div class="row mb-4">
+<div class="row g-3 mb-4">
 
-
-    <div class="col-md-4">
-
-        <div class="card dashboard-card text-center">
-
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
 
                 <h5>🌧 Rain</h5>
@@ -103,10 +99,8 @@
 
 
 
-    <div class="col-md-4">
-
-        <div class="card dashboard-card text-center">
-
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
 
                 <h5>⚓ Swimming Safety</h5>
@@ -123,17 +117,15 @@
 
 
 
-    <div class="col-md-4">
-
-        <div class="card dashboard-card">
-
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card dashboard-card h-100">
             <div class="card-body">
 
                 <h5>⚠️ Safety Recommendations</h5>
 
                 <div id="recommendation">
 
-                    Checking marine conditions...
+                    Checking swimming conditions...
 
                 </div>
 
@@ -154,13 +146,10 @@
 <!-- ================= CHARTS ================= -->
 
 
-<div class="row mb-4">
+<div class="row g-3 mb-4">
 
-
-    <div class="col-md-4">
-
-        <div class="card dashboard-card">
-
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card dashboard-card h-100">
             <div class="card-body">
 
                 <h5>🌬 Wind Speed</h5>
@@ -176,10 +165,8 @@
 
 
 
-    <div class="col-md-4">
-
-        <div class="card dashboard-card">
-
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card dashboard-card h-100">
             <div class="card-body">
 
                 <h5>🌊 Wave Height</h5>
@@ -195,10 +182,8 @@
 
 
 
-    <div class="col-md-4">
-
-        <div class="card dashboard-card">
-
+    <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card dashboard-card h-100">
             <div class="card-body">
 
                 <h5>🌡 Temperature</h5>
@@ -222,12 +207,10 @@
 <!-- ================= MAP ================= -->
 
 
-<div class="row mb-4">
-
+<div class="row g-3 mb-4">
     <div class="col-12">
 
-        <div class="card dashboard-card">
-
+        <div class="card dashboard-card h-100">
             <div class="card-body">
 
 
@@ -263,7 +246,7 @@
 
 
 
-        // ================= MAP =================
+              // ================= MAP =================
 
 
         var map = L.map('map');
@@ -277,41 +260,27 @@
 
 
 
-        navigator.geolocation.getCurrentPosition(function(position){
+
+        loadMarineLocation(function(lat, lon, name, isSelected){
+
+            map.setView(
+                [lat, lon],
+                13
+            );
 
 
-            let lat = position.coords.latitude;
-
-            let lon = position.coords.longitude;
-
-
-            map.setView([lat,lon],13);
-
-
-
-            L.marker([lat,lon])
-
+            L.marker([lat, lon])
             .addTo(map)
-
-            .bindPopup("Your Location")
-
+            .bindPopup(name)
             .openPopup();
 
 
 
-            // Get API Data
-
-            getMarineData(lat,lon);
+            getMarineData(lat, lon);
 
 
 
         });
-
-
-
-
-
-
         // ================= API =================
 
 
@@ -688,7 +657,6 @@
 
 
         }
-
 
 
     </script>

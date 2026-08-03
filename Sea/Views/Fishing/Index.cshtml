@@ -5,63 +5,46 @@
 
 <!-- ================= TOP CARDS ================= -->
 
-<div class="row mb-4">
+<div class="row g-3 mb-4">
 
-
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
-
                 <h5>🌬 Wind Speed</h5>
-
                 <h2 id="wind">-- m/s</h2>
-
             </div>
         </div>
     </div>
 
 
-
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
-
                 <h5>🌊 Wave Height</h5>
-
                 <h2 id="wave">-- m</h2>
-
             </div>
         </div>
     </div>
 
 
-
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
-
                 <h5>⏱ Wave Period</h5>
-
                 <h2 id="wavePeriod">-- sec</h2>
-
             </div>
         </div>
     </div>
 
 
-
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
-
                 <h5>👁 Visibility</h5>
-
                 <h2 id="visibility">-- km</h2>
-
             </div>
         </div>
     </div>
-
 
 </div>
 
@@ -69,11 +52,11 @@
 
 <!-- ================= SECOND ROW ================= -->
 
-<div class="row mb-4">
+<div class="row g-3 mb-4">
 
 
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
 
                 <h5>🧭 Wind Direction</h5>
@@ -85,19 +68,22 @@
                 <p id="windDirectionText">
                     Waiting...
                 </p>
+
             </div>
         </div>
     </div>
 
 
 
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
 
                 <h5>🌧 Rain</h5>
 
-                <h2 id="rain">-- mm</h2>
+                <h2 id="rain">
+                    -- mm
+                </h2>
 
             </div>
         </div>
@@ -105,8 +91,8 @@
 
 
 
-    <div class="col-md-3">
-        <div class="card dashboard-card text-center">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card dashboard-card text-center h-100">
             <div class="card-body">
 
                 <h5>🎣 Fishing Safety</h5>
@@ -120,45 +106,59 @@
     </div>
 
 
+</div>
 
-    <div class="col-md-3">
 
-        <div class="card dashboard-card">
 
-            <div class="card-body">
+<!-- ================= SAFETY ================= -->
 
-                <h5>⚠️ Safety Recommendations</h5>
 
-                <div id="recommendation">
-                    Checking fishing conditions...
-                </div>
+<div class="row mb-4">
 
+    <div class="col-12">
+
+        <div class="safety-box">
+
+            <h5>
+                ⚠️ Safety Recommendations
+            </h5>
+
+
+            <div id="recommendation">
+                Checking fishing conditions...
             </div>
+
 
         </div>
 
     </div>
-
 
 </div>
 
 <!-- ================= CHARTS ================= -->
 
 
-<div class="row mb-4">
+<div class="row g-3">
+
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card dashboard-card p-3">
+
+            <h5>🌬 Wind Speed</h5>
+
+            <canvas id="windChart"></canvas>
+
+        </div>
+    </div>
 
 
-    <div class="col-md-4">
 
-        <div class="card dashboard-card">
+    <div class="col-12 col-md-6 col-lg-4">
 
-            <div class="card-body">
+        <div class="card dashboard-card p-3">
 
-                <h5>🌬 Wind Speed</h5>
+            <h5>🌊 Wave Height</h5>
 
-                <canvas id="windChart"></canvas>
-
-            </div>
+            <canvas id="waveChart"></canvas>
 
         </div>
 
@@ -166,50 +166,19 @@
 
 
 
+    <div class="col-12 col-md-6 col-lg-4">
 
-    <div class="col-md-4">
+        <div class="card dashboard-card p-3">
 
-        <div class="card dashboard-card">
+            <h5>🌡 Temperature</h5>
 
-            <div class="card-body">
-
-                <h5>🌊 Wave Height</h5>
-
-                <canvas id="waveChart"></canvas>
-
-            </div>
+            <canvas id="tempChart"></canvas>
 
         </div>
 
     </div>
-
-
-
-
-    <div class="col-md-4">
-
-        <div class="card dashboard-card">
-
-            <div class="card-body">
-
-                <h5>🌡 Temperature</h5>
-
-                <canvas id="tempChart"></canvas>
-
-            </div>
-
-        </div>
-
-    </div>
-
 
 </div>
-
-
-
-
-
-
 
 
 <!-- ================= MAP ================= -->
@@ -251,50 +220,41 @@
 
 
 
-        // ================= MAP =================
+               // ================= MAP =================
 
 
         var map = L.map('map');
 
 
-        L.tileLayer(
-        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
             attribution:'&copy; OpenStreetMap contributors'
-        }
-        ).addTo(map);
+
+        }).addTo(map);
 
 
 
-        navigator.geolocation.getCurrentPosition(function(position){
+
+        loadMarineLocation(function(lat, lon, name, isSelected){
+
+            map.setView(
+                [lat, lon],
+                13
+            );
 
 
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-
-
-
-            map.setView([lat,lon],13);
-
-
-
-            L.marker([lat,lon])
+            L.marker([lat, lon])
             .addTo(map)
-            .bindPopup("Your Location")
+            .bindPopup(name)
             .openPopup();
 
 
 
-            getMarineData(lat,lon);
+            getMarineData(lat, lon);
 
 
 
         });
-
-
-
-
-
         // ================= API =================
 
 

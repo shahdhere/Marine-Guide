@@ -2,6 +2,117 @@
     ViewData["Title"] = "Marine Dashboard";
 }
 
+<!-- ================= LOCATION SELECTOR ================= -->
+
+<div class="row g-3 mb-4">
+
+    <div class="col-12">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body d-flex justify-content-between align-items-center">
+
+
+                <div>
+                    <h5 id="locationTitle">
+                        📍 Current Location
+                    </h5>
+
+                    <h4 id="locationName">
+                        Detecting location...
+                    </h4>
+
+                </div>
+
+
+                <select id="locationSelect" class="form-select w-auto">
+
+                    <option value="">
+                        Change Location
+                    </option>
+
+                    <option value="27.0174,49.6225">
+                        Jubail 🇸🇦
+                    </option>
+
+                    <option value="26.6424,50.1596">
+                        Ras Tanura 🇸🇦
+                    </option>
+
+                    <option value="16.8892,42.5511">
+                        Jazan 🇸🇦
+                    </option>
+
+                    <option value="24.0895,38.0618">
+                        Yanbu 🇸🇦
+                    </option>
+
+                    <option value="17.2343,40.0071">
+                        Al Lith 🇸🇦
+                    </option>
+
+                    <option value="16.7000,42.0000">
+                        Farasan Islands 🇸🇦
+                    </option>
+
+                    <option value="28.4328,48.4937">
+                        Khafji 🇸🇦
+                    </option>
+
+                    <option value="26.4207,50.0888">
+                        Dammam 🇸🇦
+                    </option>
+
+                    <option value="26.2172,50.1971">
+                        Al Khobar 🇸🇦
+                    </option>
+
+                    <option value="21.5433,39.1728">
+                        Jeddah 🇸🇦
+                    </option>
+
+                    <option value="25.276987,55.296249">
+                        Dubai 🇦🇪
+                    </option>
+
+                    <option value="-33.8688,151.2093">
+                        Sydney 🇦🇺
+                    </option>
+
+                    <option value="35.6762,139.6503">
+                        Tokyo 🇯🇵
+                    </option>
+
+                    <option value="41.3874,2.1686">
+                        Barcelona 🇪🇸
+                    </option>
+
+                    <option value="-33.9249,18.4241">
+                        Cape Town 🇿🇦
+                    </option>
+
+                    <option value="3.2028,73.2207">
+                        Maldives 🇲🇻
+                    </option>
+                    <option value="25.2854,51.5310">
+                        Doha 🇶🇦
+                    </option>
+
+                    <option value="25.7617,-80.1918">
+                        Miami 🇺🇸
+                    </option>
+
+                </select>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <div class="container-fluid">
 
@@ -10,7 +121,8 @@
     <div class="row g-3 mb-4">
 
 
-        <div class="col-md-3">
+
+        <div class="col-12 col-sm-6 col-lg-3">
             <div class="card shadow dashboard-card">
                 <div class="card-body text-center">
 
@@ -22,7 +134,7 @@
         </div>
 
 
-        <div class="col-md-3">
+        <div class="col-12 col-sm-6 col-lg-3">
             <div class="card shadow dashboard-card">
                 <div class="card-body text-center">
 
@@ -34,7 +146,7 @@
         </div>
 
 
-        <div class="col-md-3">
+        <div class="col-12 col-sm-6 col-lg-3">
             <div class="card shadow dashboard-card">
                 <div class="card-body text-center">
 
@@ -46,7 +158,7 @@
         </div>
 
 
-        <div class="col-md-3">
+        <div class="col-12 col-sm-6 col-lg-3">
             <div class="card shadow dashboard-card">
                 <div class="card-body text-center">
 
@@ -57,20 +169,11 @@
             </div>
         </div>
 
-
-    </div>
-
-
-
-    <div class="row g-3">
-
-
         <!-- Charts Row 1 -->
         <div class="row g-3 mb-4">
 
 
-            <div class="col-md-6">
-
+            <div class="col-12 col-lg-6">
                 <div class="card shadow dashboard-card">
                     <div class="card-body">
 
@@ -87,8 +190,7 @@
 
 
 
-            <div class="col-md-6">
-
+            <div class="col-12 col-lg-6">
                 <div class="card shadow dashboard-card">
                     <div class="card-body">
 
@@ -113,8 +215,7 @@
         <div class="row g-3 mb-4">
 
 
-            <div class="col-md-6">
-
+            <div class="col-12 col-lg-6">
                 <div class="card shadow dashboard-card">
                     <div class="card-body">
 
@@ -131,8 +232,7 @@
 
 
 
-            <div class="col-md-6">
-
+            <div class="col-12 col-lg-6">
                 <div class="card shadow dashboard-card">
                     <div class="card-body">
 
@@ -159,8 +259,7 @@
         <div class="row g-3">
 
 
-            <div class="col-md-8">
-
+            <div class="col-12 col-lg-8">
                 <div class="card shadow dashboard-card">
 
                     <div class="card-body">
@@ -181,8 +280,7 @@
 
 
 
-            <div class="col-md-4">
-
+            <div class="col-12 col-lg-4">
                 <div class="card shadow dashboard-card">
 
                     <div class="card-body">
@@ -238,24 +336,20 @@
 
 
 
-        // ================= LOCATION =================
+               // ================= LOCATION =================
 
 
-        navigator.geolocation.getCurrentPosition(function(position){
+        loadMarineLocation(function(lat, lon, name, isSelected){
 
-
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-
-
-            // Map
-
-            map.setView([lat, lon], 12);
+            map.setView(
+                [lat, lon],
+                12
+            );
 
 
             L.marker([lat, lon])
             .addTo(map)
-            .bindPopup("Your Location")
+            .bindPopup(name)
             .openPopup();
 
 
@@ -265,9 +359,24 @@
             getMarineData(lat, lon);
 
 
+
+            document.getElementById("locationName")
+            .innerHTML = name;
+                    if(isSelected)
+        {
+            document.getElementById("locationTitle")
+            .innerHTML =
+            "📍 Selected Marine Area";
+        }
+        else
+        {
+            document.getElementById("locationTitle")
+            .innerHTML =
+            "📍 Current Location";
+        }
+
+
         });
-
-
 
 
         // ================= API =================
@@ -551,8 +660,59 @@
 
 
         }
+        document.getElementById("locationSelect")
+        .addEventListener("change", function(){
 
 
+        if(this.value=="")
+            return;
+
+
+        let coords = this.value.split(",");
+
+
+        let lat = parseFloat(coords[0]);
+        let lon = parseFloat(coords[1]);
+
+
+        let name =
+        this.options[this.selectedIndex].text;
+
+
+               // حفظ الموقع للجلسة الحالية
+        sessionStorage.setItem(
+            "marineLocation",
+            JSON.stringify({
+                lat: lat,
+                lon: lon,
+                name: name
+            })
+        );
+
+
+
+        map.setView([lat,lon],13);
+
+
+
+        L.marker([lat,lon])
+        .addTo(map)
+        .bindPopup(name)
+        .openPopup();
+
+
+
+        getMarineData(lat,lon);
+
+
+
+        document.getElementById("locationName")
+        .innerHTML=name;
+                document.getElementById("locationTitle")
+        .innerHTML =
+        "📍 Selected Marine Area";
+
+        });
 
     </script>
 

@@ -1,26 +1,23 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+@media (min-width:768px) {
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    overflow-x: hidden;
 }
-/* Main dashboard cards */
+
+
+/* =========================
+   Dashboard Cards
+========================= */
 
 .dashboard-card {
     background: linear-gradient(135deg,#023e8a,#0077b6);
@@ -30,24 +27,29 @@ body {
 }
 
 
-/* Chart and map cards */
-
 .card {
     border: none;
     border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 5px 20px rgba(0,0,0,.15);
 }
 
-
-    /* Dashboard headings */
 
     .card h5 {
         color: #023e8a;
         font-weight: bold;
     }
+
+
 canvas {
     max-height: 200px !important;
 }
+
+
+
+/* =========================
+   Safety Box
+========================= */
+
 .safety-box {
     background: #023e8a;
     color: white;
@@ -65,6 +67,13 @@ canvas {
         line-height: 2;
         font-size: 16px;
     }
+
+
+
+/* =========================
+   Update
+========================= */
+
 .update-info {
     color: white;
 }
@@ -72,16 +81,20 @@ canvas {
 
 .update-title {
     font-size: 14px;
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,.65);
 }
 
 
 #lastUpdate {
     font-size: 13px;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,.45);
 }
 
 
+
+/* =========================
+   Refresh Button
+========================= */
 
 .refresh-btn {
     background: transparent;
@@ -95,3 +108,266 @@ canvas {
     .refresh-btn:hover {
         color: #90e0ef;
     }
+
+
+
+/* =========================
+   Menu Button
+========================= */
+
+.menu-toggle {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+
+
+/* =========================
+   Layout
+========================= */
+
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+
+/* =========================
+   Sidebar
+========================= */
+
+
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: #023e8a;
+    transition: .3s ease;
+    overflow: hidden;
+}
+
+
+
+    .sidebar.closed {
+        width: 0;
+        padding: 0;
+    }
+
+
+
+/* =========================
+   Content
+========================= */
+
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: .3s ease;
+}
+
+
+    .content.expanded {
+        width: 100%;
+    }
+
+
+
+/* =========================
+   Top Bar
+========================= */
+
+
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    width: 100%;
+}
+
+
+    .topbar > div:last-child {
+        margin-left: auto;
+    }
+
+
+
+/* =========================
+   Buttons
+========================= */
+
+
+.btn-outline-light,
+.btn-danger {
+    border-radius: 20px;
+    padding: 8px 20px;
+}
+
+
+
+/* =========================
+   Page Header
+========================= */
+
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+
+
+/* =========================
+   Fish Cards
+========================= */
+
+
+.fish-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.fish-card {
+    width: 300px;
+}
+
+
+    .fish-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+
+
+/* =================================================
+                 MOBILE RESPONSIVE
+================================================= */
+
+@media(max-width:768px) {
+
+
+    /* Sidebar */
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background: #023e8a;
+        z-index: 2000;
+        padding: 20px;
+        transform: translateX(-250px);
+        transition: transform .3s ease;
+        overflow-y: auto;
+    }
+
+
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+
+
+    /* Menu Button */
+
+    .menu-toggle {
+        position: relative;
+        z-index: 3000;
+        font-size: 30px;
+    }
+
+
+
+    /* Content */
+
+    .content {
+        width: 100%;
+    }
+
+
+
+    /* Top Bar */
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 10px;
+    }
+
+
+
+        .topbar > div:nth-child(2) {
+            width: 100%;
+        }
+
+
+
+        .topbar > div:last-child {
+            width: 100%;
+            margin-left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+
+    /* Page Header */
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+
+    /* Fish Cards */
+
+    .fish-container {
+        justify-content: center;
+    }
+
+
+    .fish-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+
+
+    /* Dashboard Cards */
+
+    .dashboard-card {
+        margin-bottom: 15px;
+    }
+
+
+
+    /* Map */
+
+    #map {
+        height: 300px;
+    }
+
+
+
+    h1, h2, h3, h4 {
+        word-break: break-word;
+    }
+}

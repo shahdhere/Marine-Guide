@@ -23,8 +23,7 @@
     <div class="app-layout">
 
         <!-- Sidebar -->
-        <aside class="sidebar">
-
+        <aside class="sidebar" id="sidebar">
             <h3>
                 🌊 Marine Guide
             </h3>
@@ -62,10 +61,14 @@
         <div class="content">
 
             <header class="topbar">
-
+                <button id="menuToggle" class="menu-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
                 <div>
 
-                    <h5>📍 Current Location</h5>
+                    <h5 id="topLocationTitle">
+                        📍 Current Location
+                    </h5>
 
                     <span id="currentLocation">
                         Waiting...
@@ -107,7 +110,7 @@
 
             </header>
 
-            <main>
+            <main id="mainContent" class="main-content">
 
                 @RenderBody()
 
@@ -120,65 +123,39 @@
 
     <footer class="footer text-muted">
         <div class="container">
-           2026 - Sea 
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="~/js/marine-location.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
 
-        navigator.geolocation.getCurrentPosition(function(position){
+               loadMarineLocation(function(lat, lon, name, isSelected){
+
+            document.getElementById("currentLocation")
+            .innerHTML = name;
 
 
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-
-
-            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
-            .then(response => response.json())
-            .then(data => {
-
-
-                let location = data.address;
-
-
-                let city =
-                    location.city ||
-                    location.town ||
-                    location.village ||
-                    location.state ||
-                    "Unknown";
-
-
-
-                document.getElementById("currentLocation").innerHTML =
-                    city;
-
-
-
-            })
-            .catch(error=>{
-
-                document.getElementById("currentLocation").innerHTML =
-                "Location unavailable";
-
-            });
-
-
-        },
-        function(){
-
-            document.getElementById("currentLocation").innerHTML =
-            "Permission denied";
+            if(isSelected)
+            {
+                document.getElementById("topLocationTitle")
+                .innerHTML =
+                "📍 Selected Marine Area";
+            }
+            else
+            {
+                document.getElementById("topLocationTitle")
+                .innerHTML =
+                "📍 Current Location";
+            }
 
         });
-
     </script>
 
     <script>
@@ -223,6 +200,16 @@
 
 
     });
+    </script>
+    <script>
+              const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("mainContent");
+        menuToggle.addEventListener("click", function(){
+
+            sidebar.classList.toggle("open");
+
+        });
     </script>
 </body>
 </html>

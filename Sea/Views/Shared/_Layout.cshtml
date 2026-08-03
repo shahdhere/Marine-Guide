@@ -208,8 +208,16 @@
         const mainContent = document.getElementById("mainContent");
         menuToggle.addEventListener("click", function(){
 
-            sidebar.classList.toggle("open");
-
+if(window.innerWidth <= 768)
+    {
+        // Mobile
+        sidebar.classList.toggle("mobile-open");
+    }
+    else
+    {
+        // Desktop
+        sidebar.classList.toggle("closed");
+    }
         });
     </script>
 </body>

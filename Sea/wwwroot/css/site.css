@@ -271,14 +271,18 @@ canvas {
         z-index: 2000;
         padding: 20px;
         transform: translateX(-250px);
-        transition: transform .3s ease;
+        transition:.3s ease;
         overflow-y: auto;
     }
 
 
-
-        .sidebar.open {
+        .sidebar.mobile-open {
             transform: translateX(0);
+        }
+
+
+        .sidebar.closed {
+            width: 250px;
         }
 
 

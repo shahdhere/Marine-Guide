@@ -142,7 +142,7 @@ Stores emergency instructions related to dangerous creatures.
 
 ## Home Page
 
-![Home Page](Sea/screenshots/Home.png)
+![Home Page](Sea/screenshots/HomePage.png)
 
 
 ## Marine Encyclopedia

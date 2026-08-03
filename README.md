@@ -147,7 +147,7 @@ Stores emergency instructions related to dangerous creatures.
 
 ## Marine Encyclopedia
 
-![Marine Encyclopedia](Sea/screenshots/EN.png)
+![Marine Encyclopedia](Sea/screenshots/Mar.png)
 
 
 ## First Aid Guide
@@ -172,7 +172,7 @@ Stores emergency instructions related to dangerous creatures.
 
 ## Fish
 
-![Fish](Sea/screenshots/Fish.png)
+![Fish](Sea/screenshots/FF.png)
 
 
 ## Details

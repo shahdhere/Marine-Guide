@@ -4,6 +4,8 @@ A web-based marine guide platform that helps users explore marine life, analyze 
 
 The system provides marine weather analysis, activity suitability prediction, marine encyclopedia, and first aid guidance for dangerous marine creatures.
 
+## 🌐 Live Demo
+🔗 https://seabule-app-dde6ccbcgkbhezch.ukwest-01.azurewebsites.net
 ---
 
 # 🚀 Features
@@ -68,12 +70,28 @@ Provides safety instructions for dangerous marine creatures:
 Provides location-based marine information using map integration.
 
 ---
+## 🧠 Risk Analysis
+
+The system evaluates marine activity safety using a custom rule-based engine.
+
+The analysis considers:
+
+- Wind Speed
+- Wave Height
+- Temperature
+- Visibility
+
+Each activity (Boating, Fishing, Swimming) has different safety thresholds that determine whether the sea condition is:
+
+- ✅ Safe
+- ⚠ Moderate Risk
+- ❌ Dangerous
 
 # 🛠 Technical Stack
 
 ## Backend
 
-- ASP.NET Core MVC (.NET 9)
+- ASP.NET Core MVC (.NET 8)
 - C#
 - Entity Framework Core
 - LINQ
@@ -147,7 +165,7 @@ Stores emergency instructions related to dangerous creatures.
 
 ## Marine Encyclopedia
 
-![Marine Encyclopedia](Sea/screenshots/Mar.png)
+![Marine Encyclopedia](Sea/screenshots/LIN.png)
 
 
 ## First Aid Guide
